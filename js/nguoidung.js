@@ -1,3 +1,4 @@
+// Updated: User profile functionality optimizations
 // Author: Nguyen Thai Son - https://github.com/Tson28
 
 var currentUser;
