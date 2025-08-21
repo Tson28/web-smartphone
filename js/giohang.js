@@ -1,3 +1,4 @@
+// Updated: Shopping cart functionality enhancements
 // Author: Nguyen Thai Son - https://github.com/Tson28
 
 var currentuser; // user hiện tại, biến toàn cục
