@@ -1,3 +1,4 @@
+// Updated: Admin panel functionality refinements
 var TONGTIEN = 0;
 
 window.onload = function () {
