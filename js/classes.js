@@ -1,4 +1,5 @@
 // Updated: Core classes optimizations
+// Enhanced: Better code structure and organization
 // Author: Nguyen Thai Son - https://github.com/Tson28
 
 function User(username, pass, ho, ten, email, products, donhang) {
