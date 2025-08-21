@@ -1,3 +1,4 @@
+// Updated: Common utilities enhancements
 // Author: Nguyen Thai Son - https://github.com/Tson28
 
 var adminInfo = [{
