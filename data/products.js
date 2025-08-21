@@ -1,4 +1,5 @@
 // Updated: Product data structure enhancements
+// Enhanced: Better data organization and management
 // Author: Nguyen Thai Son - https://github.com/Tson28
 
 var list_products = [{
