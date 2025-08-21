@@ -1,3 +1,4 @@
+// Updated: Product data structure enhancements
 // Author: Nguyen Thai Son - https://github.com/Tson28
 
 var list_products = [{
