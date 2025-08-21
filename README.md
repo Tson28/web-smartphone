@@ -1,6 +1,5 @@
-<!-- Author: Nguyen Thai Son - https://github.com/Tson28 -->
-
-# 🌐 Website Bán Điện Thoại
+<!-- Updated: Project documentation enhancements -->
+# Web Smartphone Project
 
 Website bán điện thoại với giao diện thân thiện, dễ sử dụng và chức năng đầy đủ.
 
