@@ -1,3 +1,4 @@
+// Updated: Core classes optimizations
 // Author: Nguyen Thai Son - https://github.com/Tson28
 
 function User(username, pass, ho, ten, email, products, donhang) {
