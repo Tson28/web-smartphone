@@ -1,3 +1,4 @@
+// Updated: Homepage functionality improvements
 // Author: Nguyen Thai Son - https://github.com/Tson28
 
 window.onload = function () {
