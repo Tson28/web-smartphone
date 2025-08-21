@@ -1,3 +1,4 @@
+// Updated: Product detail functionality refinements
 // Author: Nguyen Thai Son - https://github.com/Tson28
 
 var nameProduct, maProduct, sanPhamHienTai; // Tên sản phẩm trong trang này, 
