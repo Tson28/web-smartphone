@@ -1,0 +1,487 @@
+/* Author: Nguyen Thai Son - https://github.com/Tson28 */
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body,
+html {
+    min-width: 1024px;
+
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+.clear {
+    clear: both;
+    line-height: 0;
+}
+
+/* căn giữa section, và set độ rộng lớn nhất là 1200px */
+section {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+hr {
+    color: #ddd;
+    background-color: #ddd;
+    border-top: 1px solid #ddd;
+}
+
+.flexContain {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+/* Use for auto clear float */
+/* ====== https://css-tricks.com/snippets/css/clear-fix/ ======== */
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+}
+
+.group:after {
+    clear: both;
+}
+
+.group {
+    zoom: 1;
+    /* For IE 6/7 (trigger hasLayout) */
+}
+
+/* =========   Alert ===============*/
+#alert {
+    z-index: 200; /* luôn trên cùng (đè lên những thứ khác) */
+    display: block;
+    position: fixed;
+    bottom: 40px;
+    right: 5px;
+    padding: 20px;
+    background-color: #111;
+    opacity: 0;
+    color: white;
+    font-weight: bold;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+#closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+/* ===== End clear float ====== */
+
+#goto-top-page {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 100;
+    background: rgba(0, 0, 0, .2);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition-duration: .2s;
+}
+#goto-top-page:hover {
+    background: rgba(0, 0, 0, .7);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+}
+
+/* ========= ScrollBar ============ */
+::-webkit-scrollbar {
+    width: .7em;
+    height: .7em;
+}
+
+::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #999;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
+
+/* ==================== css thêm , chưa sử dụng ========================= */
+/* tooltip https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_copy_clipboard2 */
+.tooltip {
+    position: absolute;
+    display: inline-block;
+    bottom: 5px;
+    right: 5px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 21;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* animation ping from thegioididong */
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #f33;
+    border-radius: 100%;
+    display: block;
+}
+
+.dot .ping {
+    border: 1px solid #f33;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    background-color: rgba(238, 46, 36, .2);
+    border-radius: 100%;
+    -webkit-animation-duration: 1.25s;
+    animation-duration: 1.25s;
+    -webkit-animation-name: sonar;
+    animation-name: sonar;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    display: block;
+    margin: -1px 0 0 -1px;
+}
+
+@keyframes sonar {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    100% {
+        -webkit-transform: scale(3);
+        transform: scale(3);
+        opacity: 0
+    }
+}
+
+/* ============= AI Chatbot Assistant ============= */
+.ai-assistant {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ai-chat-icon {
+    width: 60px;
+    height: 60px;
+    background: #FFD400;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.ai-chat-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.ai-chat-icon.active {
+    background: #000;
+    color: #FFD400;
+}
+
+.ai-chat-icon i {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.ai-chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ai-chat-header {
+    background: #FFD400;
+    color: #000;
+    padding: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px 15px 0 0;
+}
+
+.ai-close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #000;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.ai-close-btn:hover {
+    background: rgba(0,0,0,0.1);
+}
+
+.ai-chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f8f9fa;
+}
+
+.ai-message, .user-message {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.ai-message {
+    justify-content: flex-start;
+}
+
+.user-message {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.ai-avatar, .user-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px;
+    flex-shrink: 0;
+}
+
+.ai-avatar {
+    background: #FFD400;
+    color: #000;
+}
+
+.user-avatar {
+    background: #007bff;
+    color: white;
+}
+
+.ai-bubble, .user-bubble {
+    max-width: 250px;
+    padding: 12px 16px;
+    border-radius: 18px;
+    word-wrap: break-word;
+    line-height: 1.4;
+}
+
+.ai-bubble {
+    background: white;
+    color: #333;
+    border: 1px solid #e1e1e1;
+}
+
+.user-bubble {
+    background: #007bff;
+    color: white;
+}
+
+.ai-quick-options {
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #e1e1e1;
+}
+
+.ai-option {
+    background: #FFD400;
+    color: #000;
+    border: none;
+    padding: 8px 12px;
+    margin: 3px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.ai-option:hover {
+    background: #000;
+    color: #FFD400;
+    transform: scale(1.05);
+}
+
+.ai-chat-input {
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #e1e1e1;
+    display: flex;
+    gap: 10px;
+}
+
+.ai-chat-input input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+}
+
+.ai-chat-input input:focus {
+    border-color: #FFD400;
+}
+
+.ai-chat-input button {
+    background: #FFD400;
+    color: #000;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.ai-chat-input button:hover {
+    background: #000;
+    color: #FFD400;
+    transform: scale(1.1);
+}
+
+/* Settings panel */
+.ai-settings {
+    padding: 12px 15px;
+    background: #fffbe6;
+    border-bottom: 1px solid #e1e1e1;
+}
+.ai-setting-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.ai-setting-row label {
+    width: 100px;
+    font-size: 13px;
+    color: #333;
+}
+.ai-setting-row input, .ai-setting-row select {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+}
+.ai-setting-actions { padding-top: 4px; }
+.ai-setting-note {
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .ai-chat-window {
+        width: 300px;
+        height: 450px;
+        right: -20px;
+    }
+    
+    .ai-chat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 10px;
+    }
+    
+    .ai-chat-icon i {
+        font-size: 16px;
+    }
+}

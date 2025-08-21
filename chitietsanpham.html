@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<!-- Author: Nguyen Thai Son - https://github.com/Tson28 -->
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thế giới điện thoại</title>
+    <link rel="shortcut icon" href="img/favicon.ico" />
+
+    <!-- Load font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
+
+	<!-- owl carousel libraries cho hình nhỏ -->
+	<link rel="stylesheet" href="js/owlcarousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="js/owlcarousel/owl.theme.default.min.css">
+	<script src="js/Jquery/Jquery.min.js"></script>
+    <script src="js/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- our files -->
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/topnav.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/taikhoan.css">
+    <link rel="stylesheet" href="css/trangchu.css">
+    <link rel="stylesheet" href="css/home_products.css">
+    <link rel="stylesheet" href="css/chitietsanpham.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <!-- js -->
+    <script src="data/products.js"></script>
+    <script src="js/classes.js"></script>
+    <script src="js/dungchung.js"></script>
+    <script src="js/chitietsanpham.js"></script>
+</head>
+
+<body>
+
+    <script> addTopNav(); </script>
+
+    <section>
+        <script> addHeader(); </script>
+
+        <div id="productNotFound" style="min-height: 50vh; text-align: center; margin: 50px; display: none;">
+            <h1 style="color: red; margin-bottom: 10px;">Không tìm thấy sản phẩm</h1>
+            <a href="index.html" style="text-decoration: underline;">Quay lại trang chủ</a>
+        </div>
+
+        <div class="chitietSanpham" style="margin-bottom: 100px">
+            <!-- Product Header -->
+            <div class="product-header">
+                <div class="product-title">
+                    <h1 id="productName">Điện thoại </h1>
+                    <div class="product-stats">
+                        <span class="sold-count">Đã bán <span id="soldCount">0</span></span>
+                        <span class="rating-display">
+                            <span id="ratingStars">0</span>/5
+                            <span id="ratingCount">0 đánh giá</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="product-nav">
+                    <a href="#specs" class="nav-link">Thông số</a>
+                    <a href="#reviews" class="nav-link">So sánh</a>
+                </div>
+                <div class="social-actions">
+                    <button class="like-btn"><i class="fa fa-heart-o"></i> Thích</button>
+                    <button class="share-btn"><i class="fa fa-share"></i> Chia sẻ</button>
+                </div>
+            </div>
+
+            <!-- Main Product Display -->
+            <div class="rowdetail group">
+                <!-- Left Column - Product Images & Info -->
+                <div class="left-column">
+                    <!-- Main Product Image -->
+                <div class="picture">
+                        <img src="" onclick="opencertain()" id="mainImage">
+                        <div class="play-button" onclick="playVideo()">
+                            <i class="fa fa-play"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Gallery -->
+                    <div class="image-gallery">
+                        <div class="gallery-nav">
+                            <span class="gallery-counter">1/<span id="totalImages">1</span></span>
+                        </div>
+                        <div class="gallery-thumbnails" id="galleryThumbnails">
+                            <!-- Thumbnails will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Storage Options -->
+                    <div class="storage-options">
+                        <h4>Dung lượng</h4>
+                        <div class="option-buttons">
+                            <button class="option-btn" data-storage="128">128GB</button>
+                            <button class="option-btn active" data-storage="256">256GB</button>
+                            <button class="option-btn" data-storage="512">512GB</button>
+                        </div>
+                    </div>
+
+                    <!-- Color Options -->
+                    <div class="color-options">
+                        <h4>Màu sắc</h4>
+                        <div class="color-buttons">
+                            <button class="color-btn active" data-color="pink" style="background: #FFB6C1"></button>
+                            <button class="color-btn" data-color="black" style="background: #000"></button>
+                            <button class="color-btn" data-color="teal" style="background: #008080"></button>
+                            <button class="color-btn" data-color="white" style="background: #fff; border: 1px solid #ddd"></button>
+                            <button class="color-btn" data-color="periwinkle" style="background: #CCCCFF"></button>
+                        </div>
+                    </div>
+
+                    <!-- Local Price -->
+                    <div class="local-price">
+                        <span>Giá tại <select id="citySelect">
+                            <option>Thành phố Hồ Chí Minh</option>
+                            <option>Hà Nội</option>
+                            <option>Đà Nẵng</option>
+                        </select></span>
+                    </div>
+
+                    <!-- Product Commitments -->
+                    <div class="product-commitments">
+                        <h3>Thế Giới Di Động cam kết</h3>
+                        <ul>
+                            <li><i class="fa fa-check"></i> Sản phẩm mới (Cần thanh toán trước khi mở hộp)</li>
+                            <li><i class="fa fa-check"></i> Hư gì đổi nấy 12 tháng tại 2959 siêu thị toàn quốc (miễn phí tháng đầu)</li>
+                            <li><i class="fa fa-check"></i> Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cáp, Cây lấy sim</li>
+                            <li><i class="fa fa-check"></i> Bảo hành chính hãng điện thoại 1 năm tại các trung tâm bảo hành hãng</li>
+                        </ul>
+                    </div>
+
+                    <!-- Related Products -->
+                    <div class="related-products">
+                        <h3>Tham khảo thêm sản phẩm cũ, trưng bày</h3>
+                        <div class="related-item">
+                            <img src="" alt="Related product" id="relatedImage">
+                            <div class="related-info">
+                                <h4 id="relatedName">Tên sản phẩm</h4>
+                                <p class="related-price">Giá từ <span id="relatedPrice">0</span>₫</span></p>
+                                <p class="related-warranty">Bảo hành Chính hãng đến <span id="relatedWarranty">01/01/2026</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Specifications -->
+                    <div class="product-specs" id="specs">
+                        <div class="specs-tabs">
+                            <button class="spec-tab active" data-tab="tech">Thông số kỹ thuật</button>
+                            <button class="spec-tab" data-tab="reviews">Bài viết đánh giá</button>
+                        </div>
+                        
+                        <div class="specs-content">
+                            <div class="spec-section active" id="tech-specs">
+                                <div class="spec-category">
+                                    <h4 class="spec-title" onclick="toggleSpecSection(this)">
+                                        <i class="fa fa-chevron-down"></i>
+                                        Cấu hình & Bộ nhớ
+                                    </h4>
+                                    <div class="spec-details">
+                                        <div class="spec-row">
+                                            <span class="spec-label">Hệ điều hành</span>
+                                            <span class="spec-value" id="spec-os">-</span>
+                                        </div>
+                                        <div class="spec-row">
+                                            <span class="spec-label">Chip xử lý</span>
+                                            <span class="spec-value" id="spec-cpu">-</span>
+                                        </div>
+                                        <div class="spec-row">
+                                            <span class="spec-label">Tốc độ CPU</span>
+                                            <span class="spec-value" id="spec-cpu-speed">-</span>
+                                        </div>
+                                        <div class="spec-row">
+                                            <span class="spec-label">Chip đồ họa</span>
+                                            <span class="spec-value" id="spec-gpu">-</span>
+                                        </div>
+                                        <div class="spec-row">
+                                            <span class="spec-label">RAM</span>
+                                            <span class="spec-value" id="spec-ram">-</span>
+                                        </div>
+                                        <div class="spec-row">
+                                            <span class="spec-label">Dung lượng lưu trữ</span>
+                                            <span class="spec-value" id="spec-storage">-</span>
+                                        </div>
+                                        <div class="spec-row">
+                                            <span class="spec-label">Dung lượng còn lại (khả dụng) khoảng</span>
+                                            <span class="spec-value" id="spec-available">-</span>
+                                        </div>
+                                        <div class="spec-row">
+                                            <span class="spec-label">Danh bạ</span>
+                                            <span class="spec-value" id="spec-contacts">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="spec-category">
+                                    <h4 class="spec-title" onclick="toggleSpecSection(this)">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Camera & Màn hình
+                                    </h4>
+                                    <div class="spec-details" style="display: none;">
+                                        <div class="spec-row">
+                                            <span class="spec-label">Màn hình</span>
+                                            <span class="spec-value" id="spec-screen">-</span>
+                                        </div>
+                                        <div class="spec-row">
+                                            <span class="spec-label">Camera sau</span>
+                                            <span class="spec-value" id="spec-camera">-</span>
+                                        </div>
+                                        <div class="spec-row">
+                                            <span class="spec-label">Camera trước</span>
+                                            <span class="spec-value" id="spec-front-camera">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="spec-category">
+                                    <h4 class="spec-title" onclick="toggleSpecSection(this)">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Pin & Sạc
+                                    </h4>
+                                    <div class="spec-details" style="display: none;">
+                                        <div class="spec-row">
+                                            <span class="spec-label">Dung lượng pin</span>
+                                            <span class="spec-value" id="spec-battery">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="spec-category">
+                                    <h4 class="spec-title" onclick="toggleSpecSection(this)">
+                                        <i class="fa fa-chevron-right"></i>
+                                        Tiện ích
+                                    </h4>
+                                    <div class="spec-details" style="display: none;">
+                                        <div class="spec-row">
+                                            <span class="spec-label">Thẻ nhớ</span>
+                                            <span class="spec-value" id="spec-memory-card">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="spec-section" id="reviews-section" style="display: none;">
+                                <div class="reviews-content">
+                                    <h3>Đánh giá sản phẩm</h3>
+                                    <p>Nội dung đánh giá sẽ được cập nhật...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Reviews -->
+                    <div class="product-reviews" id="reviews">
+                        <h3>Đánh giá <span id="reviewProductName">sản phẩm</span></h3>
+                        <div class="overall-rating">
+                            <div class="rating-big">
+                                <span id="bigRating">0</span>/5
+                            </div>
+                            <div class="rating-summary">
+                                <p><span id="satisfiedCustomers">0</span> khách hài lòng</p>
+                                <p><span id="totalReviews">0</span> đánh giá</p>
+                            </div>
+                        </div>
+
+                        <div class="rating-breakdown">
+                            <div class="rating-bar">
+                                <span class="stars">5 sao</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 99.9%"></div>
+                                </div>
+                                <span class="percentage">99.9%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span class="stars">4 sao</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="percentage">0%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span class="stars">3 sao</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="percentage">0%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span class="stars">2 sao</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="percentage">0%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span class="stars">1 sao</span>
+                                <div class="bar-container">
+                                    <div class="bar-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="percentage">0%</span>
+                            </div>
+                        </div>
+
+                        <div class="individual-reviews">
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <span class="reviewer-name">Hiền</span>
+                                    <div class="review-tags">
+                                        <span class="tag">Sẽ giới thiệu cho bạn bè, người thân</span>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <p>Tôi sạc máy mà sạc nhanh thì máy nóng kinh khủng có cách nào hạ nhiệt không</p>
+                                </div>
+                                <div class="review-support">
+                                    <p><strong>Hỗ trợ kỹ thuật</strong> đã liên hệ hỗ trợ ngày 01/10/2024</p>
+                                </div>
+                                <div class="review-footer">
+                                    <span class="helpful">Hữu ích (390)</span>
+                                    <span class="usage-time">Đã dùng khoảng 3 ngày</span>
+                                </div>
+                </div>
+                    </div>
+
+                        <button class="write-review-btn">Viết đánh giá</button>
+                        </div>
+                    </div>
+
+                <!-- Right Column - Pricing & Purchase -->
+                <div class="right-column">
+                    <!-- Pricing (placed first for alignment with product images) -->
+                    <div class="pricing-section">
+                        <div class="current-price">
+                            <span class="price-main" id="mainPrice">0</span>₫
+                        </div>
+                        <div class="original-price">
+                            <span id="originalPrice">0</span>₫
+                        </div>
+                        <div class="discount-info">
+                            <span class="discount-percent" id="discountPercent">-0%</span>
+                            <span class="slots-remaining">Còn <span id="slotsRemaining">0</span>/10 suất</span>
+                    </div>
+                </div>
+
+                    <!-- Top Banner -->
+                    <div class="top-banner">
+                        <div class="kredivo-banner">
+                            <h3>Kredivo</h3>
+                            <p>Giảm đến 5.000.000₫</p>
+                            <p>Không cần trả trước | Từ 0% lãi suất | Đăng ký Online</p>
+                        </div>
+                        </div>
+
+                    <!-- Online Deal Banner -->
+                    <div class="online-deal-banner">
+                        <h3>Online Giá Rẻ Quá</h3>
+                        <div class="countdown">
+                            <span>Kết thúc sau</span>
+                            <div class="countdown-timer">
+                                <span id="hours">05</span> <span id="minutes">30</span> <span id="seconds">38</span>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Promotions -->
+                    <div class="promotions-section">
+                        <h4>Khuyến mãi trị giá <span id="promoValue">0</span>₫</h4>
+                        <ul class="promo-list">
+                            <li>Voucher AirPods, Apple Watch, Macbook (500.000₫)</li>
+                            <li>Voucher điều hòa (300.000₫)</li>
+                            <li>Voucher sạc dự phòng, smartwatch, tai nghe/loa bluetooth, ốp lưng (100.000₫)</li>
+                            <li>Voucher máy lọc nước (300.000₫)</li>
+                            <li>Voucher gói cước SIM (50.000₫)</li>
+                            <li>Hoàn tiền 200.000₫ thẻ tín dụng TPBank EVO</li>
+                    </ul>
+                    </div>
+
+                    <!-- Delivery Info -->
+                    <div class="delivery-info">
+                        <p><i class="fa fa-truck"></i> Giao hàng nhanh chóng (tuỳ khu vực)</p>
+                        <p><i class="fa fa-info-circle"></i> Mỗi số điện thoại chỉ mua 3 sản phẩm trong 1 tháng</p>
+                        <p><i class="fa fa-map-marker"></i> Chọn địa chỉ nhận hàng để biết thời gian giao</p>
+                    </div>
+
+                    <!-- VIP Points -->
+                    <div class="vip-points">
+                        <p>+<span id="vipPoints">0</span> điểm tích lũy Quà Tặng VIP</p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button class="add-to-cart-btn" onclick="themVaoGioHang(maProduct, nameProduct);">
+                            <i class="fa fa-cart-plus"></i>
+                            Thêm vào giỏ
+                        </button>
+                        <button class="buy-now-btn">
+                            <i class="fa fa-shopping-bag"></i>
+                            Mua ngay
+                        </button>
+                    </div>
+
+                    <!-- Installment Options -->
+                    <div class="installment-section">
+                        <h4>Mua trả chậm 0%</h4>
+                        <p>Qua thẻ tín dụng, nhà tài chính, mua trước trả sau</p>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <p><i class="fa fa-phone"></i> Gọi đặt mua <strong>1900 232 460</strong> (8:00 - 21:30)</p>
+                        <p><i class="fa fa-store"></i> <a href="#" class="check-store">Xem siêu thị có hàng</a></p>
+                    </div>
+
+                    <!-- Recently Viewed -->
+                    <div class="recently-viewed">
+                        <div class="recent-header">
+                            <h4>Sản phẩm đã xem</h4>
+                            <a href="#" class="clear-history">Xóa lịch sử</a>
+                        </div>
+                        <div class="recent-item">
+                            <img src="" alt="Recently viewed" id="recentImage">
+                            <div class="recent-info">
+                                <h5 id="recentName">Tên sản phẩm</h5>
+                                <p class="recent-price" id="recentPrice">0₫</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Overlay -->
+            <div id="overlaycertainimg" class="overlaycertainimg">
+                <div class="close" onclick="closecertain()">&times;</div>
+                <div class="overlaycertainimg-content">
+                    <img id="bigimg" class="bigimg" src="">
+                    <div class="div_smallimg owl-carousel">
+                        <!-- Small images will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="goiYSanPham"></div>
+    </section>
+
+    <script>addContainTaiKhoan();</script>
+
+    <div class="footer"><script>addFooter();</script></div>
+
+    <script>
+        // Toggle specification sections
+        function toggleSpecSection(element) {
+            const details = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            if (details.style.display === 'none') {
+                details.style.display = 'block';
+                icon.className = 'fa fa-chevron-down';
+            } else {
+                details.style.display = 'none';
+                icon.className = 'fa fa-chevron-right';
+            }
+        }
+
+        // Switch between tabs
+        document.querySelectorAll('.spec-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs and sections
+                document.querySelectorAll('.spec-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.spec-section').forEach(s => s.style.display = 'none');
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show corresponding section
+                const targetId = this.getAttribute('data-tab');
+                if (targetId === 'tech') {
+                    document.getElementById('tech-specs').style.display = 'block';
+                } else if (targetId === 'reviews') {
+                    document.getElementById('reviews-section').style.display = 'block';
+                }
+            });
+        });
+
+        // Countdown timer
+        function updateCountdown() {
+            let hours = 5;
+            let minutes = 30;
+            let seconds = 38;
+            
+            const timer = setInterval(() => {
+                if (seconds > 0) {
+                    seconds--;
+                } else if (minutes > 0) {
+                    minutes--;
+                    seconds = 59;
+                } else if (hours > 0) {
+                    hours--;
+                    minutes = 59;
+                    seconds = 59;
+                } else {
+                    clearInterval(timer);
+                }
+                
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }, 1000);
+        }
+
+        // Initialize countdown when page loads
+        document.addEventListener('DOMContentLoaded', updateCountdown);
+
+        // Play video function
+        function playVideo() {
+            alert('Video sẽ được phát...');
+        }
+    </script>
+
+</body>
+
+</html>
